@@ -2,7 +2,7 @@ import React from 'react';
 import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard'
-
+import { addMovies } from '../Actions';
 class App extends React.Component {
 componentDidMount() {
   // when we make api call we dispatch an action
@@ -11,10 +11,7 @@ componentDidMount() {
     console.log('UPDATED');
     this.forceUpdate();
   });
-  store.dispatch({
-      type: 'ADD_MOVIES',
-      movies: data
-  });
+  store.dispatch(addMovies(data));
   // whenever we dispatch an action it will call subscribe method then rest of flow will continue.
   console.log('STATE', this.props.store.getState())
 }
