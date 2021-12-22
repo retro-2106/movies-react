@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 
 import './index.css';
 import App from './Components/App';
-import movies from './reducers';
+// import movies from './reducers';
 import rootReducer from './reducers';
 
-const store = createStore(rootReducer);
+//middlware is used to access the  state
+// and modify it before the action is dispatched
+
+
+//we crated a logger to keep a track of our actions performed
+//logger(obj)(next)(action)
+// if we have multiple middliware next helps to call the next middleware
+const logger = function({dispatch, getState}) {
+  return function(next) {
+    return function(action){
+      //here middleware code comes
+      console.log('ACTION_TYPE =', action.type);
+      next(action); ///calling the next middleware with action as the argument
+    
+      //but if there is no other middleware left it calls the dispatch method
+    }
+  }
+}
+
+const store = createStore(rootReducer, applyMiddleware(logger));
 console.log('store', store);
 // console.log('BEFORE STATE', store.getState());
 
