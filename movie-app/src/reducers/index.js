@@ -1,5 +1,6 @@
-import { act } from "react-dom/cjs/react-dom-test-utils.production.min";
-import { ADD_MOVIES, ADD_TO_FAVOURITES, REMOVE_FROM_FAVOURITES, SET_SHOW_FAVOURITES } from "../Actions";
+import { ADD_MOVIES, ADD_TO_FAVOURITES,
+     REMOVE_FROM_FAVOURITES, 
+     SET_SHOW_FAVOURITES } from "../Actions";
 
 const initialMovieState = {
     list: [],
@@ -7,7 +8,7 @@ const initialMovieState = {
     showFavourites: false
 }
 
-export default function movies(state = initialMovieState, action){
+export function movies(state = initialMovieState, action){
     // if(action.type === ADD_MOVIES){
     //     return {
     //         ...state,
@@ -46,3 +47,23 @@ export default function movies(state = initialMovieState, action){
     }
 }
 
+const initialSearchState = {
+    result: {}
+};
+
+export function search (state = initialSearchState, action)
+{
+    return state;
+}
+
+const initialRootState = {
+    movies : initialMovieState,
+    search : initialSearchState
+}
+
+export default function rootReducer( state = initialRootState, action){
+    return {
+        movies: movies(state.movies, action),
+        search: search(state.search, action)
+    }
+}
