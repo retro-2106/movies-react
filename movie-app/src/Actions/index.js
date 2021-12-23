@@ -1,5 +1,7 @@
 // import { movies } from "../reducers";
 
+import { movies } from "../reducers";
+
 export const ADD_MOVIES ='ADD_MOVIES';
 export const ADD_TO_FAVOURITES = 'ADD_TO_FAVOURITES'
 export const REMOVE_FROM_FAVOURITES = 'REMOVE_FROM_FAVOURITES'
@@ -50,7 +52,7 @@ export function handleMovieSearch(movie){
         fetch(url).then(response => response.json()).then(movie => {
             console.log("fetching movie",movie);
 
-
+            dispatch(addMovieSearchResult(movie));
         });
     }
 }
