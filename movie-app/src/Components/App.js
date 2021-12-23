@@ -2,7 +2,7 @@ import React from 'react';
 import {data} from '../data';
 import Navbar from './Navbar';
 import MovieCard from './MovieCard'
-import { addMovies, setShowFavourite, showFavourites } from '../Actions';
+import { addMovies, setShowFavourite } from '../Actions';
 class App extends React.Component {
 componentDidMount() {
   // when we make api call we dispatch an action
