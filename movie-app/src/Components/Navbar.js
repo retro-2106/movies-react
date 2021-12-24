@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMovieToList, handleMovieSearch } from '../Actions';
-import { movies } from '../reducers';
+import { addMovieToList, handleMovieSearch } from '../actions';
 
 class Navbar extends Component {
   constructor(props) {
@@ -26,9 +25,7 @@ class Navbar extends Component {
   };
 
   render() {
-    // const { showSearchResults, results: movie } = this.state;
-    // referring result by name of movie
-    const { result: movie, showSearchResults } = this.props.search;
+    const { showSearchResults, results: movie } = this.props.search;
     return (
       <div className="nav">
         <div className="search-container">
